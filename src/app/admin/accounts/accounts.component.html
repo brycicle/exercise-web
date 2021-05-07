@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row mt-5">
+    <div class="col-12">
+
+      <div class="card shadow">
+        <div class="card-header d-flex justify-content-between">
+          <b class="text-center">Accounts</b>
+          <button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/account/add']">Add Account</button>
+        </div>
+
+        <div class="card-body">
+
+          <table datatable class="row-border hover" *ngIf="accounts">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let account of accounts">
+              <td>{{account.id}}</td>
+              <td>{{account.username}}</td>
+              <td>********</td>
+              <td>
+                <button type="button" class="btn btn-outline-success" [routerLink]="['/admin/account/update/' + account.id]">Update</button>
+                <button type="button" class="btn btn-outline-danger"(click)="deleteAccount(account.id);">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

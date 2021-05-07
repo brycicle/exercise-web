@@ -1,0 +1,420 @@
+<div class="container mt-5" >
+
+  <div class="row mt-5">
+    <div class="col-12">
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Update Contact</h5>
+        <div class="card-body" *ngIf="contact">
+          <div>
+
+            <form [formGroup]="identificationForm" (ngSubmit)="onSubmit()">
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="FirstName" placeholder="{{contact.Identification.FirstName}}">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="LastName" placeholder="{{contact.Identification.LastName}}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Birth Date</label>
+                    <input class="form-control" type="date" value="2011-08-19" id="birthDate" formControlName="DateOfBirth" placeholder="{{contact.Identification.DateOfBirth}}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control select" formControlName="Gender">
+                      <option>M</option>
+                      <option>F</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="Title" placeholder="{{contact.Identification.Title}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row py-3">
+                <div class="col-12">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-success" type="submit">Update</button>
+                  </div>
+                </div>
+              </div>
+            </form> <!-- Form End -->
+
+          </div> <!-- Form End -->
+        </div>
+        <div class="card-footer text-muted bg-info"></div>
+      </div>
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Address</h5>
+        <div class="card-body">
+          <div>
+            <div *ngFor="let address of contact.Address; index as i">
+              <hr class="bg-danger">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Type</label>
+                    <select class="form-control select" value="{{address.Type}}">
+                      <option>Home</option>
+                      <option>Office</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>House/Lot No.</label>
+                    <input type="text" class="form-control" placeholder="House/Lot No." value="{{address.Number}}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Street</label>
+                    <input type="text" class="form-control" placeholder="Street" value="{{address.Street}}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Unit</label>
+                    <input type="text" class="form-control" placeholder="Unit" value="{{address.Unit}}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="State" value="{{address.State}}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="City" value="{{address.City}}">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>ZipCode</label>
+                    <input type="text" class="form-control" placeholder="Zip Code" value="{{address.Zipcode}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row py-3">
+                <div class="col-6">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger" type="button" (click)="deleteAddress(address.Id)">Delete</button>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-success" type="button" (click)="updateAddress(i, addressUpdate)">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row py-3">
+            <div class="col-12">
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary" type="button"(click)="addAddress(addressAdd)">Add Address</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted bg-info"></div>
+      </div>
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Communication</h5>
+        <div class="card-body">
+          <div>
+
+            <div *ngFor="let communication of contact.Communication; index as i">
+              <hr class="bg-danger">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Type</label>
+                    <select class="form-control select" value="{{communication.Type}}">
+                      <option>Email</option>
+                      <option>Mobile</option>
+                      <option>Landline</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Value</label>
+                    <input type="text" class="form-control" value="{{communication.Value}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row py-3">
+                <div class="col-6">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger" type="button" (click)="deleteCommunication(communication.Id)">Delete</button>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-success" type="button"(click)="updateCommunication(i, communicationUpdate)">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="row py-3">
+              <div class="col-12">
+                <div class="d-grid gap-2">
+                  <button class="btn btn-outline-primary" type="button"(click)="addCommunication(communicationAdd)">Add Communication</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+<div>
+
+  <ng-template #addressUpdate let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="address-update-modal">Address update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="addressForm">
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control select" id="addressType" formControlName="Type" placeholder="{{contact.Address[selectedAddressIndex].Type}}">
+                <option>Home</option>
+                <option>Office</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="houseNumber">House/Lot No.</label>
+              <input type="text" class="form-control" id="houseNumber" formControlName="Number" placeholder="{{contact.Address[selectedAddressIndex].Number}}">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control" id="street" formControlName="Street" placeholder="{{contact.Address[selectedAddressIndex].Street}}">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="unit">Unit</label>
+              <input type="text" class="form-control" id="unit" formControlName="Unit" placeholder="{{contact.Address[selectedAddressIndex].Unit}}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" formControlName="State" placeholder="{{contact.Address[selectedAddressIndex].State}}">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" formControlName="City" placeholder="{{contact.Address[selectedAddressIndex].City}}">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="zipCode">ZipCode</label>
+              <input type="text" class="form-control" id="zipCode" formControlName="Zipcode" placeholder="{{contact.Address[selectedAddressIndex].Zipcode}}">
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <ng-template #communicationUpdate let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="communication-update-modal">Communication update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="communicationForm">
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control select" formControlName="Type" value="{{contact.Communication[selectedCommunicationIndex].Type}}">
+                <option>Email</option>
+                <option>Mobile</option>
+                <option>Landline</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label>Value</label>
+              <input type="text" class="form-control" id="value" formControlName="Value" placeholder="{{contact.Communication[selectedCommunicationIndex].Value}}">
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <ng-template #addressAdd let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="address-add-modal">Add Address</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="addressFormAdd">
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control select" id="addressTypeAdd" formControlName="Type">
+                <option>Home</option>
+                <option>Office</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="houseNumber">House/Lot No.</label>
+              <input type="text" class="form-control" id="houseNumberAdd" formControlName="Number" placeholder="Number">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control" id="streetAdd" formControlName="Street" placeholder="Street">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="unit">Unit</label>
+              <input type="text" class="form-control" id="unitAdd" formControlName="Unit" placeholder="Unit">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="stateAdd" formControlName="State" placeholder="State">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="cityAdd" formControlName="City" placeholder="City">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="zipCode">ZipCode</label>
+              <input type="text" class="form-control" id="zipCodeAdd" formControlName="Zipcode" placeholder="ZipCode">
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  <ng-template #communicationAdd let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="communication-add-modal">Add Communication</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="communicationFormAdd">
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>Type</label>
+              <select class="form-control select" formControlName="Type">
+                <option>Email</option>
+                <option>Mobile</option>
+                <option>Landline</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label>Value</label>
+              <input type="text" class="form-control" formControlName="Value">
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>

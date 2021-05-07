@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="row mt-5">
+    <div class="col-12">
+
+      <div class="card shadow">
+        <div class="card-header d-flex justify-content-between">
+          <b class="text-center">Contacts</b>
+          <button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/contact/add']">Add Contact</button>
+        </div>
+
+        <div class="card-body">
+
+          <table datatable class="row-border hover" *ngIf="contacts">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>BirthDate</th>
+              <th>Gender</th>
+              <th>Title</th>
+              <th>Address</th>
+              <th>Contact</th>
+              <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contact of contacts">
+              <td>{{contact.Identification.FirstName}} {{contact.Identification.LastName}}</td>
+              <td>{{contact.Identification.DateOfBirth}}</td>
+              <td>{{contact.Identification.Gender}}</td>
+              <td>{{contact.Identification.Title}}</td>
+              <td>
+                {{contact.Address[0].Number}} {{contact.Address[0].Street}} {{contact.Address[0].Unit}}, {{contact.Address[0].City}} {{contact.Address[0].State}} {{contact.Address[0].Zipcode}}
+              </td>
+              <td>
+                {{contact.Communication[0].Type}} : {{contact.Communication[0].Value}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-outline-success" [routerLink]="['/admin/contact/update/' + contact.Identification.Id]">Update</button>
+                <button type="button" class="btn btn-outline-danger"(click)="deleteContact(contact.Identification.Id);">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

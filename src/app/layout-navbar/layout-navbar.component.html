@@ -1,0 +1,29 @@
+<div class="container d-flex flex-column mw-100 w-100 bg-dark navbar-dark">
+  <nav class="navbar mw-100 d-flex justify-content-between">
+
+    <div *ngIf="!isAuthenticated">
+      <a class="navbar-brand" href="#">
+        <span class="ml-2">Exercise</span>
+      </a>
+    </div>
+
+    <div *ngIf="isAuthenticated">
+      <ul class="nav nav-tabs" id="nav-options">
+        <li class="nav-item">
+          <a [routerLink]="['/admin/account']" [routerLinkActive]="['active']" class="nav-link">Acccount</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/admin/contact']" [routerLinkActive]="['active']" class="nav-link">Contacts</a>
+        </li>
+        <li class="nav-item">
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="isAuthenticated">
+      <button type="button" class="btn btn-outline-light" (click)="logout()">Logout</button>
+    </div>
+
+  </nav>
+
+</div>

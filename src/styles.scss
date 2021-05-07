@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/bootstrap/scss/bootstrap";
+
+#nav-options {
+  .nav-link {
+    color: #fff;
+  }
+
+  .active {
+    color: #000 !important;
+  }
+}
+
+.form-group select {
+  background-color: #fff !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,0 +1,158 @@
+<div class="container mt-5">
+
+  <div class="row mt-5">
+    <div class="col-12">
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Add Contact</h5>
+        <div class="card-body">
+          <form [formGroup]="contactForm">
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="FirstName">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="LastName">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="birthDate">Birth Date</label>
+                    <input class="form-control" type="date" value="2011-08-19" id="birthDate" formControlName="DateOfBirth">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select class="form-control select" id="gender" formControlName="Gender">
+                    <option>M</option>
+                    <option>F</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="lastName">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Title" formControlName="Title">
+                </div>
+              </div>
+            </div>
+
+          </form> <!-- Form End -->
+        </div>
+        <div class="card-footer text-muted bg-info"></div>
+      </div>
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Address</h5>
+        <div class="card-body">
+          <form [formGroup]="addressForm">
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="addressType">Type</label>
+                  <select class="form-control select" id="addressType" formControlName="Type">
+                    <option>Home</option>
+                    <option>Office</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="houseNumber">House/Lot No.</label>
+                  <input type="text" class="form-control" id="houseNumber" placeholder="House/Lot No." formControlName="Number">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="street">Street</label>
+                  <input type="text" class="form-control" id="street" placeholder="Street" formControlName="Street">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="unit">Unit</label>
+                  <input type="text" class="form-control" id="unit" placeholder="Unit" formControlName="Unit">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input type="text" class="form-control" id="state" placeholder="State" formControlName="State">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" id="city" placeholder="City" formControlName="City">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="zipCode">ZipCode</label>
+                  <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" formControlName="Zipcode">
+                </div>
+              </div>
+            </div>
+
+          </form> <!-- Form End -->
+        </div>
+        <div class="card-footer text-muted bg-info"></div>
+      </div>
+
+      <div class="card border rounded shadow my-5">
+        <h5 class="card-header">Communication</h5>
+        <div class="card-body">
+          <form [formGroup]="communicationForm">
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="communicationType">Type</label>
+                  <select class="form-control select" id="communicationType" formControlName="Type">
+                    <option>Email</option>
+                    <option>Mobile</option>
+                    <option>Landline</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="communicationValue">Value</label>
+                  <input type="text" class="form-control" id="communicationValue" placeholder="Street" formControlName="Value">
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-6 offset-6 d-flex flex-row-reverse">
+              <button type="submit" class="btn btn-outline-success btn-lg mx-3" (click)="sendForm()">Add Contact</button>
+              <button type="button" class="btn btn-outline-danger btn-lg mx-3">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<div>
